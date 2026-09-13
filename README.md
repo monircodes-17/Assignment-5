@@ -1,75 +1,224 @@
-# React + TypeScript + Vite
+# 🚀 Dev Stack Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive **Dev Stack Builder** website built with React, TypeScript, Tailwind CSS, and DaisyUI. Users can explore different developer tools, view tool details, and build their preferred development stack.
 
-Currently, two official plugins are available:
+## 🌐 Live Site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[View Live Site](https://iridescent-rugelach-4df55f.netlify.app/)
 
-## React Compiler
+## 📦 GitHub Repository
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+[View Repository](https://github.com/monircodes-17/Assignment-5)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Technologies Used
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React.js
+- TypeScript
+- Tailwind CSS
+- DaisyUI
+- React Router
+- React Toastify
+- Vite
+- JSON Data
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## ✨ Features
 
+- Responsive design for mobile, tablet, and desktop devices
+- Browse different developer tools
+- View detailed information about each tool
+- Add tools to a personal development stack
+- Remove tools from the selected stack
+- Display toast notifications for user actions
+- Clean and user-friendly interface
+- Reusable React components
+- Type-safe development using TypeScript
+- Data management using local JSON files
+
+---
+
+## 📋 Project Overview
+
+The **Dev Stack Builder** helps developers explore useful development tools and create their own customized development stack.
+
+Users can:
+
+1. Explore available developer tools.
+2. View tool details.
+3. Add preferred tools to their stack.
+4. Remove tools from their stack.
+5. Manage their selected development tools easily.
+
+---
+
+## 💻 Run the Project Locally
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/monircodes-17/Assignment-5.git
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Go to the project folder
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+cd Assignment-5
 ```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Start the development server
+
+```bash
+npm run dev
+```
+
+Now open the local development URL shown in the terminal.
+
+---
+
+## 📁 Project Structure
+
+```text
+src/
+├── assets/
+├── components/
+├── pages/
+├── routes/
+├── types/
+├── data/
+├── App.tsx
+├── main.tsx
+└── index.css
+```
+
+---
+
+## ❓ React Questions and Answers
+
+### 1. What is the difference between state and props?
+
+**Props** are used to pass data from a parent component to a child component.
+
+**State** is used to store and manage data inside a component. When state changes, React updates the user interface.
+
+---
+
+### 2. What is the useState hook?
+
+`useState` is a React Hook used to create and manage state in a functional component.
+
+```tsx
+const [count, setCount] = useState(0);
+```
+
+Here:
+
+- `count` is the current state value.
+- `setCount` is the function used to update the state.
+- `0` is the initial value.
+
+---
+
+### 3. What is the purpose of useEffect?
+
+`useEffect` is used to perform side effects in a React component.
+
+Examples:
+
+- Fetching data from an API
+- Updating the document title
+- Working with timers
+- Running code when a component renders or updates
+
+---
+
+### 4. What is conditional rendering?
+
+Conditional rendering means displaying different UI elements based on a condition.
+
+Example:
+
+```tsx
+{isLoggedIn ? <p>Welcome User</p> : <p>Please Login</p>}
+```
+
+---
+
+### 5. What is prop drilling?
+
+Prop drilling happens when data is passed through several components using props, even when the middle components do not need that data.
+
+It can be avoided by using:
+
+- Context API
+- State management libraries
+- Better component structure
+
+---
+
+### 6. What is the difference between controlled and uncontrolled components?
+
+A **controlled component** is managed by React state.
+
+An **uncontrolled component** stores its value inside the DOM and is usually accessed with a ref.
+
+Controlled components are commonly used in React forms.
+
+---
+
+### 7. Why are keys important in React?
+
+Keys help React identify which list items have changed, been added, or been removed.
+
+Example:
+
+```tsx
+{tools.map((tool) => (
+  <ToolCard key={tool.id} tool={tool} />
+))}
+```
+
+A key should be unique and stable.
+
+---
+
+## ❔ Frequently Asked Questions
+
+### Is this project responsive?
+
+Yes. The website is designed to work on mobile, tablet, and desktop devices.
+
+### Can users create their own development stack?
+
+Yes. Users can add and remove tools to create a customized stack.
+
+### Is TypeScript used in this project?
+
+Yes. TypeScript is used for type safety and better code maintainability.
+
+### Is the project deployed online?
+
+Yes. The project is deployed on Netlify.
+
+---
+
+## 👨‍💻 Developer
+
+**Md. Mehidy Hasan Monir**
+
+Aspiring Web Developer  
+Learning modern web development with React, TypeScript, and other frontend technologies.
+
+---
+
+## 📄 License
+
+This project was created for educational purposes.
