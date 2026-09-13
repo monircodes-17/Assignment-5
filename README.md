@@ -218,4 +218,6 @@ Learning modern web development with React, TypeScript, and other frontend techn
 
 ## 📄 License
 
-This project was created for educational purposes.
+This project was created as part of a Programming Hero assignment.
+It is designed to enhance practical knowledge and skills in React, TypeScript,
+and modern Frontend Development.
