@@ -1,6 +1,6 @@
 # 🚀 Dev Stack Builder
 
-A modern and responsive **Dev Stack Builder** website built with React, TypeScript, Tailwind CSS, and DaisyUI. Users can explore different developer tools, view tool details, and build their preferred development stack.
+A modern and responsive **Dev Stack Builder** website built with React, TypeScript, and Tailwind CSS. Users can explore different developer tools and build their preferred development stack.
 
 ## 🌐 Live Site
 
@@ -14,43 +14,40 @@ A modern and responsive **Dev Stack Builder** website built with React, TypeScri
 
 ## 🛠️ Technologies Used
 
-- React.js
-- TypeScript
-- Tailwind CSS
-- DaisyUI
-- React Router
-- React Toastify
-- Vite
-- JSON Data
+* React.js
+* TypeScript
+* Tailwind CSS
+* Vite
+* JSON Data
 
 ---
 
 ## ✨ Features
 
-- Responsive design for mobile, tablet, and desktop devices
-- Browse different developer tools
-- View detailed information about each tool
-- Add tools to a personal development stack
-- Remove tools from the selected stack
-- Display toast notifications for user actions
-- Clean and user-friendly interface
-- Reusable React components
-- Type-safe development using TypeScript
-- Data management using local JSON files
+* Responsive design for mobile, tablet, and desktop devices
+* Browse different developer tools
+* Add tools to a personal development stack
+* Remove tools from the selected stack
+* Remove all selected tools at once
+* Display the number of selected technologies
+* Clean and user-friendly interface
+* Reusable React components
+* Type-safe development using TypeScript
+* Data management using local JSON files
 
 ---
 
 ## 📋 Project Overview
 
-The **Dev Stack Builder** helps developers explore useful development tools and create their own customized development stack.
+The **Dev Stack Builder** helps developers explore useful development technologies and create their own customized development stack.
 
 Users can:
 
-1. Explore available developer tools.
-2. View tool details.
-3. Add preferred tools to their stack.
-4. Remove tools from their stack.
-5. Manage their selected development tools easily.
+1. Explore available developer technologies.
+2. View technology information.
+3. Add preferred technologies to their stack.
+4. Remove technologies from their stack.
+5. Manage their selected development stack easily.
 
 ---
 
@@ -91,7 +88,6 @@ src/
 ├── assets/
 ├── components/
 ├── pages/
-├── routes/
 ├── types/
 ├── data/
 ├── App.tsx
@@ -121,9 +117,9 @@ const [count, setCount] = useState(0);
 
 Here:
 
-- `count` is the current state value.
-- `setCount` is the function used to update the state.
-- `0` is the initial value.
+* `count` is the current state value.
+* `setCount` is the function used to update the state.
+* `0` is the initial value.
 
 ---
 
@@ -133,10 +129,10 @@ Here:
 
 Examples:
 
-- Fetching data from an API
-- Updating the document title
-- Working with timers
-- Running code when a component renders or updates
+* Fetching data from an API
+* Updating the document title
+* Working with timers
+* Running code when dependencies change
 
 ---
 
@@ -158,9 +154,9 @@ Prop drilling happens when data is passed through several components using props
 
 It can be avoided by using:
 
-- Context API
-- State management libraries
-- Better component structure
+* Context API
+* State management libraries
+* Better component structure
 
 ---
 
@@ -198,7 +194,7 @@ Yes. The website is designed to work on mobile, tablet, and desktop devices.
 
 ### Can users create their own development stack?
 
-Yes. Users can add and remove tools to create a customized stack.
+Yes. Users can add and remove technologies to create a customized development stack.
 
 ### Is TypeScript used in this project?
 
@@ -214,7 +210,8 @@ Yes. The project is deployed on Netlify.
 
 **Md. Mehidy Hasan Monir**
 
-Aspiring Web Developer  
+Aspiring Web Developer
+
 Learning modern web development with React, TypeScript, and other frontend technologies.
 
 ---
