@@ -28,7 +28,7 @@ const Hero = () => {
 
       <div className="flex justify-center">
         <img
-          src="/banner-stack.png"
+          src="./banner-stack.png"
           alt="Development stack illustration"
           className="w-full max-w-lg"
           onError={(event: React.SyntheticEvent<HTMLImageElement>) => {
