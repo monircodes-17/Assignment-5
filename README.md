@@ -1,142 +1,139 @@
-# 🚀 Dev Stack Builder
+🚀 Dev Stack Builder
 
-A modern and responsive **Dev Stack Builder** website built with React, TypeScript, and Tailwind CSS. Users can explore different developer tools and build their preferred development stack.
+A modern and responsive Dev Stack Builder website built with React.js, TypeScript, Tailwind CSS, React Toastify, Vite, and JSON data. Users can explore different technologies and build their own development stack.
 
-## 🌐 Live Site
+🌐 Live Site
 
-[View Live Site](https://cosmic-froyo-663eb3.netlify.app/)
+View Live Site
 
-## 📦 GitHub Repository
+📦 GitHub Repository
 
-[View Repository](https://github.com/monircodes-17/Assignment-5)
+View Repository
 
----
+✨ Features
+📱 Fully responsive design for mobile, tablet, and desktop
+🧑‍💻 Browse technologies from local JSON data
+➕ Add technologies to your development stack
+🚫 Prevent duplicate technologies from being added
+🗑️ Remove individual technologies
+🧹 Remove all selected technologies at once
+🔢 Display the total number of selected technologies
+🔔 Toast notifications using React Toastify
+⏳ Loading state while technology data is being loaded
+📭 Empty stack state
+🧩 Reusable React components
+🔷 TypeScript interfaces for type safety
+🎨 Shared orange → pink → violet gradient design
+🛠️ Technologies Used
+React.js
+TypeScript
+Tailwind CSS
+React Toastify
+Vite
+JSON Data
+📖 Project Overview
 
-## 🛠️ Technologies Used
+Dev Stack Builder helps developers explore popular development technologies and create a personalized technology stack.
 
-- React.js
-- TypeScript
-- Tailwind CSS
-- React Toastify
-- Vite
-- JSON Data
+Technology information is stored in a local JSON file and loaded dynamically using React's useEffect. Users can add technologies to their stack, remove individual items, or clear the entire stack.
 
----
+The project focuses on responsive UI, reusable components, TypeScript type safety, state management, and a clean user experience.
 
-## ✨ Features
+📂 Project Structure
+Assignment-5/
+├── public/
+│   └── technologies.json
+│
+├── src/
+│   ├── assets/
+│   │   └── logo-text.png
+│   │
+│   ├── components/
+│   │   ├── Navbar.tsx
+│   │   ├── Hero.tsx
+│   │   ├── TechnologyCard.tsx
+│   │   ├── StackSidebar.tsx
+│   │   └── Footer.tsx
+│   │
+│   ├── types/
+│   │   └── technology.ts
+│   │
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
+│
+├── index.html
+├── package.json
+├── vite.config.ts
+└── README.md
+⚙️ Installation & Setup
 
-- Responsive design for mobile, tablet, and desktop devices
-- Browse different developer technologies
-- Add technologies to a personal development stack
-- Prevent duplicate technologies from being added
-- Remove individual technologies from the stack
-- Remove all selected technologies at once
-- Display the number of selected technologies
-- Toast notifications for user actions
-- Loading state while fetching JSON data
-- Empty stack state
-- Reusable React components
-- Type-safe development using TypeScript
-- Data management using local JSON files
+Clone the repository:
 
----
-
-## 📋 Project Overview
-
-The **Dev Stack Builder** helps developers explore useful development technologies and create their own customized development stack.
-
-Users can:
-
-1. Explore available developer technologies.
-2. View technology information.
-3. Add preferred technologies to their stack.
-4. Remove technologies from their stack.
-5. Clear their selected stack easily.
-
----
-
-## 💻 Run the Project Locally
-
-### 1. Clone the repository
-
-```bash
 git clone https://github.com/monircodes-17/Assignment-5.git
-2. Go to the project folder
+
+Go to the project directory:
+
 cd Assignment-5
-3. Install dependencies
+
+Install dependencies:
+
 npm install
-4. Start the development server
+
+Run the development server:
+
 npm run dev
 
-Now open the local development URL shown in the terminal.
+Build the project:
 
-5. Build for production
 npm run build
-📁 Project Structure
-src/
-├── assets/
-├── components/
-│   ├── Navbar.tsx
-│   ├── Hero.tsx
-│   ├── TechnologyCard.tsx
-│   ├── StackSidebar.tsx
-│   └── Footer.tsx
-├── types/
-│   └── technology.ts
-├── App.tsx
-├── main.tsx
-└── index.css
+⚛️ React Questions & Answers
+1. What is JSX, and why is it used?
 
-public/
-└── technologies.json
-❓ React Questions and Answers
-1. What is JSX, and why is it used in React?
+JSX stands for JavaScript XML. It allows us to write HTML-like syntax inside JavaScript or TypeScript.
 
-JSX is a syntax that allows us to write HTML-like code inside JavaScript or TypeScript.
+It makes React components easier to write and understand.
 
-It is used in React because it makes UI code easier to read and write.
+const App = () => {
+  return <h1>Hello React</h1>;
+};
+2. What is the difference between Props and State?
 
-2. What is the difference between props and state?
+Props are used to pass data from a parent component to a child component. Props are read-only.
 
-Props are used to pass data from a parent component to a child component.
+State is used to store and manage data that can change inside a component.
 
-State is used to store and manage data inside a component. When state changes, React updates the UI.
-
-3. What does the useState hook do, and where did you use it in this project?
+Props → Parent → Child
+State → Data managed inside a component
+3. What is the useState hook and where is it used?
 
 useState is a React Hook used to create and manage state in a functional component.
 
-In this project, it is used in App.tsx to manage:
+In this project, it is used to manage:
 
 Technology data
 Selected stack
 Loading state
 
-It is also used in Navbar.tsx to manage the mobile menu.
-
 Example:
 
 const [stack, setStack] = useState<Technology[]>([]);
-4. What does the useEffect hook do, and why did you need it to load the JSON data?
+4. What is the useEffect hook and why is it used to load JSON data?
 
-useEffect is used to perform side effects in a React component.
+useEffect is a React Hook used for performing side effects.
 
-In this project, useEffect is used to load the technology data from the local JSON file when the component is mounted.
-
-Example:
+In this project, useEffect is used to fetch technology data from the local JSON file when the application loads.
 
 useEffect(() => {
   fetch(`${import.meta.env.BASE_URL}technologies.json`)
     .then((response) => response.json())
-    .then((data) => {
-      setTechnologies(data);
-    });
+    .then((data) => setTechnologies(data));
 }, []);
-5. Why does every item in a .map() list need a unique key prop?
+5. Why is a unique key required when rendering a list in React?
 
-React uses the key prop to identify each item in a list.
+React uses a unique key to identify individual elements in a list.
 
-A unique and stable key helps React efficiently update, add, or remove list items.
+It helps React efficiently update only the elements that have changed.
 
 Example:
 
@@ -146,63 +143,61 @@ Example:
     technology={technology}
   />
 ))}
-6. What is conditional rendering? Show one place you used it.
+
+Here, technology.id is used as the unique key.
+
+6. How can you conditionally render something in React?
 
 Conditional rendering means displaying different UI based on a condition.
 
-In this project, the stack displays an empty message when no technology has been selected.
-
-Example:
+For example:
 
 {stack.length === 0 ? (
   <p>Your stack is empty.</p>
 ) : (
-  <div>
-    {/* Selected technologies */}
-  </div>
+  <p>{stack.length} technologies selected.</p>
 )}
-7. How do you pass data from a parent component to a child component, and how does a child send something back to the parent?
 
-A parent component passes data to a child component through props.
+If the stack is empty, the first message is displayed. Otherwise, the selected technology count is displayed.
 
-In this project, App.tsx passes the technology data and the onAdd function to TechnologyCard.
+7. How do you pass data from a parent component to a child component? And how does a child component communicate with its parent?
+
+A parent component can pass data to a child component using props.
 
 <TechnologyCard
   technology={technology}
-  selected={...}
+  selected={selected}
   onAdd={handleAdd}
 />
 
-The child component can send information back to the parent by calling a function received through props.
+The child can communicate back to the parent by receiving a callback function through props and calling it.
 
-onClick={() => onAdd(technology)}
+onAdd(technology);
 
-Here, TechnologyCard calls the onAdd function defined in App.tsx.
+Here, App.tsx passes handleAdd to TechnologyCard, and TechnologyCard calls it when the user clicks Add to Stack.
 
-❔ Frequently Asked Questions
-Is this project responsive?
+❓ FAQ
+Can this project be deployed anywhere?
 
-Yes. The website is designed to work on mobile, tablet, and desktop devices.
+Yes. The project can be deployed on platforms such as Netlify, Vercel, or GitHub Pages with the appropriate Vite configuration.
 
-Can users create their own development stack?
+Is TypeScript required?
 
-Yes. Users can add and remove technologies to create a customized development stack.
+TypeScript is used in this project for better type safety and developer experience, but the same project concept can also be implemented using JavaScript.
 
-Is TypeScript used in this project?
+Can the title, logo, and colors be changed?
 
-Yes. TypeScript is used for type safety and better code maintainability.
+Yes. The title, logo, typography, colors, and other UI elements can be customized according to the project requirements.
 
-Is the project deployed online?
+Where are the technology icons from?
 
-Yes. The project is deployed on Netlify.
+The technology icons are loaded using Simple Icons CDN.
 
 👨‍💻 Developer
 
 Md. Mehidy Hasan Monir
 
-Aspiring Web Developer
-
-Learning modern web development with React, TypeScript, and modern frontend technologies.
+Built as a Programming Hero Assignment 5 — Dev Stack Builder project.
 
 📄 License
 
