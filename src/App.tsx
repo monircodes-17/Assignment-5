@@ -21,6 +21,7 @@ const App = () => {
         if (!response.ok) {
           throw new Error("Data loading failed");
         }
+
         return response.json();
       })
       .then((data: Technology[]) => {
@@ -37,18 +38,12 @@ const App = () => {
   }, []);
 
   const handleAdd = (technology: Technology) => {
-    const exists = stack.some((item) => item.id === technology.id);
-    if (exists) {
-      toast.warning(`${technology.name} is already added`);
-      return;
-    }
-
-    const categoryExists = stack.some(
-      (item) => item.category === technology.category
+    const exists = stack.some(
+      (item) => item.id === technology.id
     );
 
-    if (categoryExists) {
-      toast.warning(`You can only pick one technology per category!`);
+    if (exists) {
+      toast.warning(`${technology.name} is already added`);
       return;
     }
 
@@ -91,6 +86,7 @@ const App = () => {
           {loading ? (
             <div className="rounded-xl border border-gray-200 bg-white p-10 text-center">
               <div className="mx-auto mb-4 h-8 w-8 animate-spin rounded-full border-4 border-pink-200 border-t-pink-500"></div>
+
               <p className="text-sm text-slate-500">
                 Loading technologies...
               </p>
