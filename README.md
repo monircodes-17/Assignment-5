@@ -4,7 +4,7 @@ A modern and responsive **Dev Stack Builder** website built with React, TypeScri
 
 ## 🌐 Live Site
 
-[View Live Site](https://iridescent-rugelach-4df55f.netlify.app/)
+[View Live Site](https://cosmic-froyo-663eb3.netlify.app/)
 
 ## 📦 GitHub Repository
 
@@ -14,26 +14,30 @@ A modern and responsive **Dev Stack Builder** website built with React, TypeScri
 
 ## 🛠️ Technologies Used
 
-* React.js
-* TypeScript
-* Tailwind CSS
-* Vite
-* JSON Data
+- React.js
+- TypeScript
+- Tailwind CSS
+- React Toastify
+- Vite
+- JSON Data
 
 ---
 
 ## ✨ Features
 
-* Responsive design for mobile, tablet, and desktop devices
-* Browse different developer tools
-* Add tools to a personal development stack
-* Remove tools from the selected stack
-* Remove all selected tools at once
-* Display the number of selected technologies
-* Clean and user-friendly interface
-* Reusable React components
-* Type-safe development using TypeScript
-* Data management using local JSON files
+- Responsive design for mobile, tablet, and desktop devices
+- Browse different developer technologies
+- Add technologies to a personal development stack
+- Prevent duplicate technologies from being added
+- Remove individual technologies from the stack
+- Remove all selected technologies at once
+- Display the number of selected technologies
+- Toast notifications for user actions
+- Loading state while fetching JSON data
+- Empty stack state
+- Reusable React components
+- Type-safe development using TypeScript
+- Data management using local JSON files
 
 ---
 
@@ -47,7 +51,7 @@ Users can:
 2. View technology information.
 3. Add preferred technologies to their stack.
 4. Remove technologies from their stack.
-5. Manage their selected development stack easily.
+5. Clear their selected stack easily.
 
 ---
 
@@ -57,167 +61,149 @@ Users can:
 
 ```bash
 git clone https://github.com/monircodes-17/Assignment-5.git
-```
-
-### 2. Go to the project folder
-
-```bash
+2. Go to the project folder
 cd Assignment-5
-```
-
-### 3. Install dependencies
-
-```bash
+3. Install dependencies
 npm install
-```
-
-### 4. Start the development server
-
-```bash
+4. Start the development server
 npm run dev
-```
 
 Now open the local development URL shown in the terminal.
 
----
-
-## 📁 Project Structure
-
-```text
+5. Build for production
+npm run build
+📁 Project Structure
 src/
 ├── assets/
 ├── components/
-├── pages/
+│   ├── Navbar.tsx
+│   ├── Hero.tsx
+│   ├── TechnologyCard.tsx
+│   ├── StackSidebar.tsx
+│   └── Footer.tsx
 ├── types/
-├── data/
+│   └── technology.ts
 ├── App.tsx
 ├── main.tsx
 └── index.css
-```
 
----
+public/
+└── technologies.json
+❓ React Questions and Answers
+1. What is JSX, and why is it used in React?
 
-## ❓ React Questions and Answers
+JSX is a syntax that allows us to write HTML-like code inside JavaScript or TypeScript.
 
-### 1. What is the difference between state and props?
+It is used in React because it makes UI code easier to read and write.
 
-**Props** are used to pass data from a parent component to a child component.
+2. What is the difference between props and state?
 
-**State** is used to store and manage data inside a component. When state changes, React updates the user interface.
+Props are used to pass data from a parent component to a child component.
 
----
+State is used to store and manage data inside a component. When state changes, React updates the UI.
 
-### 2. What is the useState hook?
+3. What does the useState hook do, and where did you use it in this project?
 
-`useState` is a React Hook used to create and manage state in a functional component.
+useState is a React Hook used to create and manage state in a functional component.
 
-```tsx
-const [count, setCount] = useState(0);
-```
+In this project, it is used in App.tsx to manage:
 
-Here:
+Technology data
+Selected stack
+Loading state
 
-* `count` is the current state value.
-* `setCount` is the function used to update the state.
-* `0` is the initial value.
-
----
-
-### 3. What is the purpose of useEffect?
-
-`useEffect` is used to perform side effects in a React component.
-
-Examples:
-
-* Fetching data from an API
-* Updating the document title
-* Working with timers
-* Running code when dependencies change
-
----
-
-### 4. What is conditional rendering?
-
-Conditional rendering means displaying different UI elements based on a condition.
+It is also used in Navbar.tsx to manage the mobile menu.
 
 Example:
 
-```tsx
-{isLoggedIn ? <p>Welcome User</p> : <p>Please Login</p>}
-```
+const [stack, setStack] = useState<Technology[]>([]);
+4. What does the useEffect hook do, and why did you need it to load the JSON data?
 
----
+useEffect is used to perform side effects in a React component.
 
-### 5. What is prop drilling?
-
-Prop drilling happens when data is passed through several components using props, even when the middle components do not need that data.
-
-It can be avoided by using:
-
-* Context API
-* State management libraries
-* Better component structure
-
----
-
-### 6. What is the difference between controlled and uncontrolled components?
-
-A **controlled component** is managed by React state.
-
-An **uncontrolled component** stores its value inside the DOM and is usually accessed with a ref.
-
-Controlled components are commonly used in React forms.
-
----
-
-### 7. Why are keys important in React?
-
-Keys help React identify which list items have changed, been added, or been removed.
+In this project, useEffect is used to load the technology data from the local JSON file when the component is mounted.
 
 Example:
 
-```tsx
-{tools.map((tool) => (
-  <ToolCard key={tool.id} tool={tool} />
+useEffect(() => {
+  fetch(`${import.meta.env.BASE_URL}technologies.json`)
+    .then((response) => response.json())
+    .then((data) => {
+      setTechnologies(data);
+    });
+}, []);
+5. Why does every item in a .map() list need a unique key prop?
+
+React uses the key prop to identify each item in a list.
+
+A unique and stable key helps React efficiently update, add, or remove list items.
+
+Example:
+
+{technologies.map((technology) => (
+  <TechnologyCard
+    key={technology.id}
+    technology={technology}
+  />
 ))}
-```
+6. What is conditional rendering? Show one place you used it.
 
-A key should be unique and stable.
+Conditional rendering means displaying different UI based on a condition.
 
----
+In this project, the stack displays an empty message when no technology has been selected.
 
-## ❔ Frequently Asked Questions
+Example:
 
-### Is this project responsive?
+{stack.length === 0 ? (
+  <p>Your stack is empty.</p>
+) : (
+  <div>
+    {/* Selected technologies */}
+  </div>
+)}
+7. How do you pass data from a parent component to a child component, and how does a child send something back to the parent?
+
+A parent component passes data to a child component through props.
+
+In this project, App.tsx passes the technology data and the onAdd function to TechnologyCard.
+
+<TechnologyCard
+  technology={technology}
+  selected={...}
+  onAdd={handleAdd}
+/>
+
+The child component can send information back to the parent by calling a function received through props.
+
+onClick={() => onAdd(technology)}
+
+Here, TechnologyCard calls the onAdd function defined in App.tsx.
+
+❔ Frequently Asked Questions
+Is this project responsive?
 
 Yes. The website is designed to work on mobile, tablet, and desktop devices.
 
-### Can users create their own development stack?
+Can users create their own development stack?
 
 Yes. Users can add and remove technologies to create a customized development stack.
 
-### Is TypeScript used in this project?
+Is TypeScript used in this project?
 
 Yes. TypeScript is used for type safety and better code maintainability.
 
-### Is the project deployed online?
+Is the project deployed online?
 
 Yes. The project is deployed on Netlify.
 
----
+👨‍💻 Developer
 
-## 👨‍💻 Developer
-
-**Md. Mehidy Hasan Monir**
+Md. Mehidy Hasan Monir
 
 Aspiring Web Developer
 
-Learning modern web development with React, TypeScript, and other frontend technologies.
+Learning modern web development with React, TypeScript, and modern frontend technologies.
 
----
+📄 License
 
-## 📄 License
-
-This project was created as part of a Programming Hero assignment.
-It is designed to enhance practical knowledge and skills in React, TypeScript,
-and modern Frontend Development.
+This project was created as part of a Programming Hero assignment for educational purposes.
